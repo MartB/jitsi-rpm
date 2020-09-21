@@ -27,6 +27,7 @@ blablablabla
 
 %package web
 Summary:        Jitsi videoconferencing server - webapp
+Version:        %{web_version}
 BuildArch:      noarch
 Requires:       jre-headless
 Recommends:     %{name}-web-nginx if nginx
@@ -44,6 +45,7 @@ blablabla
 
 %package turnserver
 Summary:        Jitsi videoconferencing server - TURN server config
+Version:        %{web_version}
 BuildArch:      noarch
 Recommends:     coturn
 
