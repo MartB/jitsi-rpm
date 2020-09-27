@@ -1,14 +1,14 @@
 plugin_paths = { "/usr/share/jitsi-meet/prosody-plugins/" }
 
 -- domain mapper options, must at least have domain base set to use the mapper
-muc_mapper_domain_base = "jitmeet.example.com";
+muc_mapper_domain_base = "jitsi-meet.example.org";
 
 turncredentials_secret = "__turnSecret__";
 
 turncredentials = {
-  { type = "stun", host = "jitmeet.example.com", port = "3478" },
-  { type = "turn", host = "jitmeet.example.com", port = "3478", transport = "udp" },
-  { type = "turns", host = "jitmeet.example.com", port = "443", transport = "tcp" }
+  { type = "stun", host = "jitsi-meet.example.org", port = "3478" },
+  { type = "turn", host = "jitsi-meet.example.org", port = "3478", transport = "udp" },
+  { type = "turns", host = "jitsi-meet.example.org", port = "443", transport = "tcp" }
 };
 
 cross_domain_bosh = false;
@@ -21,7 +21,7 @@ ssl = {
   ciphers = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384"
 }
 
-VirtualHost "jitmeet.example.com"
+VirtualHost "jitsi-meet.example.org"
         -- enabled = false -- Remove this line to enable this host
         authentication = "anonymous"
         -- Properties below are modified by jitsi-meet-tokens package config
@@ -33,11 +33,11 @@ VirtualHost "jitmeet.example.com"
         -- Note that old-style SSL on port 5223 only supports one certificate, and will always
         -- use the global one.
         ssl = {
-                key = "/etc/prosody/certs/jitmeet.example.com.key";
-                certificate = "/etc/prosody/certs/jitmeet.example.com.crt";
+                key = "/etc/prosody/certs/jitsi-meet.example.org.key";
+                certificate = "/etc/prosody/certs/jitsi-meet.example.org.crt";
         }
-        speakerstats_component = "speakerstats.jitmeet.example.com"
-        conference_duration_component = "conferenceduration.jitmeet.example.com"
+        speakerstats_component = "speakerstats.jitsi-meet.example.org"
+        conference_duration_component = "conferenceduration.jitsi-meet.example.org"
         -- we need bosh
         modules_enabled = {
             "bosh";
@@ -49,44 +49,44 @@ VirtualHost "jitmeet.example.com"
             "muc_lobby_rooms";
         }
         c2s_require_encryption = false
-        lobby_muc = "lobby.jitmeet.example.com"
-        main_muc = "conference.jitmeet.example.com"
-        -- muc_lobby_whitelist = { "recorder.jitmeet.example.com" } -- Here we can whitelist jibri to enter lobby enabled rooms
+        lobby_muc = "lobby.jitsi-meet.example.org"
+        main_muc = "conference.jitsi-meet.example.org"
+        -- muc_lobby_whitelist = { "recorder.jitsi-meet.example.org" } -- Here we can whitelist jibri to enter lobby enabled rooms
 
-Component "conference.jitmeet.example.com" "muc"
+Component "conference.jitsi-meet.example.org" "muc"
     storage = "memory"
     modules_enabled = {
         "muc_meeting_id";
         "muc_domain_mapper";
         -- "token_verification";
     }
-    admins = { "focusUser@auth.jitmeet.example.com" }
+    admins = { "focusUser@auth.jitsi-meet.example.org" }
     muc_room_locking = false
     muc_room_default_public_jids = true
 
 -- internal muc component
-Component "internal.auth.jitmeet.example.com" "muc"
+Component "internal.auth.jitsi-meet.example.org" "muc"
     storage = "memory"
     modules_enabled = {
       "ping";
     }
-    admins = { "focusUser@auth.jitmeet.example.com", "jvb@auth.jitmeet.example.com" }
+    admins = { "focus@auth.jitsi-meet.example.org", "jvb@auth.jitsi-meet.example.org" }
     muc_room_locking = false
     muc_room_default_public_jids = true
 
-VirtualHost "auth.jitmeet.example.com"
+VirtualHost "auth.jitsi-meet.example.org"
     authentication = "internal_plain"
 
-Component "focus.jitmeet.example.com"
-    component_secret = "focusSecret"
+Component "focus.jitsi-meet.example.org"
+    component_secret = "__focusSecret__"
 
-Component "speakerstats.jitmeet.example.com" "speakerstats_component"
-    muc_component = "conference.jitmeet.example.com"
+Component "speakerstats.jitsi-meet.example.org" "speakerstats_component"
+    muc_component = "conference.jitsi-meet.example.org"
 
-Component "conferenceduration.jitmeet.example.com" "conference_duration_component"
-    muc_component = "conference.jitmeet.example.com"
+Component "conferenceduration.jitsi-meet.example.org" "conference_duration_component"
+    muc_component = "conference.jitsi-meet.example.org"
 
-Component "lobby.jitmeet.example.com" "muc"
+Component "lobby.jitsi-meet.example.or" "muc"
     storage = "memory"
     restrict_room_creation = true
     muc_room_locking = false

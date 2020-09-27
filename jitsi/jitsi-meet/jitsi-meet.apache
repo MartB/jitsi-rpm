@@ -1,7 +1,7 @@
 
 <VirtualHost *:80>
-    ServerName jitsi-meet.example.com
-    Redirect permanent / https://jitsi-meet.example.com/
+    ServerName jitsi-meet.example.org
+    Redirect permanent / https://jitsi-meet.example.org/
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
@@ -9,15 +9,15 @@
 
 <VirtualHost *:443>
 
-  ServerName jitsi-meet.example.com
+  ServerName jitsi-meet.example.org
 
   # enable HTTP/2, if available
   Protocols h2 http/1.1
 
   SSLEngine on
   SSLProxyEngine on
-  SSLCertificateFile /etc/jitsi/meet/jitsi-meet.example.com.crt
-  SSLCertificateKeyFile /etc/jitsi/meet/jitsi-meet.example.com.key
+  SSLCertificateFile /etc/jitsi-meet/jitsi-meet.example.org.crt
+  SSLCertificateKeyFile /etc/jitsi-meet/jitsi-meet.example.org.key
 
   Header always set Strict-Transport-Security "max-age=63072000"
 
@@ -32,7 +32,7 @@
 
   ErrorDocument 404 /static/404.html
 
-  Alias "/config.js" "/etc/jitsi/meet/jitsi-meet.example.com-config.js"
+  Alias "/config.js" "/etc/jitsi-meet/jitsi-meet.example.org-config.js"
   <Location /config.js>
     Require all granted
   </Location>
