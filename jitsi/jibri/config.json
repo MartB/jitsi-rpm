@@ -5,7 +5,7 @@
     // Where recording files should be temporarily stored
     "recording_directory":"/tmp/recordings",
     // The path to the script which will be run on completed recordings
-    "finalize_recording_script_path": "/path/to/finalize_recording.sh",
+    "finalize_recording_script_path": "/usr/share/jibri/cleanup-script.sh",
     "xmpp_environments": [
         {
             // A friendly name for this environment which can be used
@@ -14,34 +14,34 @@
             // The hosts of the XMPP servers to connect to as part of
             //  this environment
             "xmpp_server_hosts": [
-                "prod.xmpp.host.net"
+                "jitsi-meet.example.org"
             ],
             // The xmpp domain we'll connect to on the XMPP server
-            "xmpp_domain": "xmpp.domain",
-            // Jibri will login to the xmpp server as a privileged user 
+            "xmpp_domain": "jitsi-meet.example.org",
+            // Jibri will login to the xmpp server as a privileged user
             "control_login": {
                 // The domain to use for logging in
-                "domain": "auth.xmpp.domain",
+                "domain": "auth.jitsi-meet.example.org",
                 // The credentials for logging in
-                "username": "username",
-                "password": "password"
+                "username": "jibri",
+                "password": "__jibriUserSecret"
             },
-            // Using the control_login information above, Jibri will join 
-            //  a control muc as a means of announcing its availability 
+            // Using the control_login information above, Jibri will join
+            //  a control muc as a means of announcing its availability
             //  to provide services for a given environment
             "control_muc": {
-                "domain": "internal.auth.xmpp.domain",
+                "domain": "internal.auth.jitsi-meet.example.org",
                 "room_name": "JibriBrewery",
-                "nickname": "jibri-nickname"
+                "nickname": "jibri"
             },
             // All participants in a call join a muc so they can exchange
             //  information.  Jibri can be instructed to join a special muc
             //  with credentials to give it special abilities (e.g. not being
             //  displayed to other users like a normal participant)
             "call_login": {
-                "domain": "recorder.xmpp.domain",
-                "username": "username",
-                "password": "password"
+                "domain": "recorder.jitsi-meet.example.org",
+                "username": "recorder",
+                "password": "__recorderUserSecret__"
             },
             // When jibri gets a request to start a service for a room, the room
             //  jid will look like:
