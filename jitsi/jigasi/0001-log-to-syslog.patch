@@ -1,0 +1,12 @@
+diff -Naur a/lib/logging.properties b/lib/logging.properties
+--- a/lib/logging.properties	2019-08-06 15:19:49.000000000 +0200
++++ b/lib/logging.properties	2020-09-26 16:43:00.039554779 +0200
+@@ -1,6 +1,6 @@
+ 
+-handlers= java.util.logging.ConsoleHandler
+-#handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler
++#handlers= java.util.logging.ConsoleHandler
++handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler
+ 
+ java.util.logging.ConsoleHandler.level = ALL
+ java.util.logging.ConsoleHandler.formatter = net.java.sip.communicator.util.ScLogFormatter

@@ -1,0 +1,27 @@
+[Unit]
+Description=Jitsi Gateway for SIP
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/jitsi/jigasi/config
+User=jigasi
+ExecStart=/usr/share/jigasi/jigasi.sh --host=$${JIGASI_HOST:-localhost} --domain=${JIGASI_HOSTNAME} --subdomain=callcontrol --secret=${JIGASI_SECRET} --logdir=/var/log/jitsi --configdir=/etc/jitsi --configdirname=jigasi ${JIGASI_OPTS}
+WorkingDirectory=~
+
+# more threads for this process
+TasksMax=65000
+# allow more open files for this process
+LimitNPROC=65000
+LimitNOFILE=65000
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

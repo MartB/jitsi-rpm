@@ -1,0 +1,10 @@
+# Jigasi settings
+JIGASI_SIPUSER=12@provider.com
+JIGASI_SIPPWD=YXNkYXNkYXNk
+JIGASI_SECRET=41EaFpZU
+JIGASI_OPTS=""
+JIGASI_HOSTNAME=meet.ceenery.org
+JIGASI_HOST=localhost
+
+# adds java system props that are passed to jigasi (default are for logging config file)
+JAVA_SYS_PROPS="-Djava.util.logging.config.file=/etc/jitsi/jigasi/logging.properties"
