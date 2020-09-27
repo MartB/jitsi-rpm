@@ -1,0 +1,3 @@
+# ensure correct permissions for all files in config dir
+Z %{_sysconfdir}/%{project}/%{name} 0640 %{user} %{group}
+z %{_sysconfdir}/%{project}/%{name} 0750 %{user} %{group}

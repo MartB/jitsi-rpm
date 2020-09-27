@@ -1,0 +1,17 @@
+diff -Naur a/lib/logging.properties b/lib/logging.properties
+--- a/lib/logging.properties	2020-08-24 22:55:33.000000000 +0200
++++ b/lib/logging.properties	2020-09-26 16:42:19.319524234 +0200
+@@ -1,11 +1,11 @@
+ 
+-handlers= java.util.logging.ConsoleHandler
++#handlers= java.util.logging.ConsoleHandler
+ 
+ # Handlers with XMPP debug enabled:
+ #handlers= java.util.logging.ConsoleHandler, org.jitsi.impl.protocol.xmpp.log.XmppPacketsFileHandler
+ 
+ # Handlers with syslog enabled:
+-#handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler
++handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler
+ #handlers= java.util.logging.ConsoleHandler, io.sentry.jul.SentryHandler
+ 
+ java.util.logging.ConsoleHandler.level = ALL

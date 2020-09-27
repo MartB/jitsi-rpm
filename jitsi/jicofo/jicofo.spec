@@ -1,71 +1,75 @@
-%global meet_version 4966
+%global project jitsi
+%global project_version 5076
+%global user %{name}
 
 Name:       jicofo
-Version:    1.0_626
+Version:    2.0.%{project_version}
 Release:    0%{?dist}
 Summary:    Jitsi conference focus
 Url:        https://jitsi.org
 License:    ASL 2.0
-Source0:    https://github.com/jitsi/%{name}/archive/stable/jitsi-meet_%{meet_version}.tar.gz
+Source0:    https://github.com/%{project}/%{name}/archive/stable/%{project}-meet_%{project_version}.tar.gz
 Source1:    config
 Source2:    sip-communicator.properties
 Source3:    %{name}.service
-Source4:    sysusers.conf
-Source5:    tmpfiles.conf
+Source4:    %{name}.sysusers
+Source5:    %{name}.tmpfiles
 Source6:    README.fedora
+Patch1:     0001-log-to-syslog.patch
 
 BuildArch:      noarch
 BuildRequires:  maven
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
-Requires:       systemd
+
 Requires:       jre-headless
+Requires:       systemd
+%{?sysusers_requires_compat}
 
 %description
 blablablabla
 
+See /usr/share/doc/jicofo/README.fedora for details.
+
+
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
 %prep
-%autosetup -p1 -n %{name}-stable-jitsi-meet_%{meet_version}
-
+%autosetup -p1 -n %{name}-stable-%{project}-meet_%{project_version}
 
 %build
-# build & pack compiled output into archive
+# build & copy dependencies
 mvn clean
 mvn versions:set -DnewVersion="%{version}"
 mvn package -DskipTests -Dassembly.skipAssembly=true
 mvn dependency:copy-dependencies -DincludeScope=runtime
 
 %install
-# jicofo directories
-install -p -d %{buildroot}%{_datadir}/%{name}/
-install -p -d %{buildroot}%{_sysconfdir}/%{name}/
-install -p -d %{buildroot}%{_localstatedir}/%{name}/
-
-# jicofo files
+# program
 install -D -m 644 -t %{buildroot}%{_datadir}/%{name}/lib/ target/dependency/*
-install -D -m 644 target/%{name}*.jar %{buildroot}%{_datadir}/%{name}/%{name}.jar
-install -D -m 755 resources/%{name}.sh %{buildroot}%{_datadir}/%{name}/%{name}.sh
+install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_datadir}/%{name}/%{name}.jar
+install -m 755 resources/%{name}.sh %{buildroot}%{_datadir}/%{name}/%{name}.sh
 
-install -D -m 640 lib/logging.properties %{buildroot}%{_sysconfdir}/%{name}/logging.properties
-install -D -m 640 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/config
-install -D -m 640 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/sip-communicator.properties
+# config
+install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ lib/logging.properties
+install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ %{SOURCE1} %{SOURCE2}
 
-# systemd files & directories
-install -p -d %{buildroot}%{_unitdir}/
+# rundir
+install -d -m 0755 %{buildroot}%{_rundir}/%{name}/
+
+# system config
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
-install -p -d %{buildroot}%{_tmpfilesdir}/
-install -D -m 644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-install -p -d %{buildroot}%{_sysuserdir}/
-install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 # documentation
-install -p -d %{buildroot}%{_pkgdocdir}
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ *.md
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ doc/*.md
 install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- SCRIPTLETS -----------------------------------------------------------------#
+%pre
+%sysusers_create_compat %{SOURCE4}
+
 %post
 %systemd_post %{name}.service
 
@@ -77,11 +81,16 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- FILES ---------------------------------------------------------------------#
 %files
-%doc %{_pkgdocdir}
+%doc %{_pkgdocdir}/
 %license LICENSE
-%{_datadir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}
-%dir %{_localstatedir}/%{name}
+
+# package files/dirs
+%{_datadir}/%{name}/
+%dir %attr(0700,%{user},root) %{_sysconfdir}/%{name}/
+%config(noreplace) %attr(0644,%{user},root) %{_sysconfdir}/%{name}/*
+%dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/
+
+# system config
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
