@@ -96,8 +96,6 @@ cp %{SOURCE2} .
 # site
 install -m 0755 -p -d %{buildroot}%{_datadir}/%{name}
 install -m 0755 -p -d %{buildroot}%{_sysconfdir}/%{name}
-#install -m 0755 -p -d %{buildroot}%{_unitdir}
-#install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 tar xjvf jitsi-meet.tar.bz2 -C %{buildroot}%{_datadir}/%{name} --strip 1
 
 for country in $(ls "node_modules/i18n-iso-countries/langs"); do
@@ -113,20 +111,20 @@ for conffile in interface_config.js logging_config.js config.js; do
     ln -sf %{_sysconfdir}/%{name}/${conffile} %{buildroot}%{_datadir}/%{name}/${conffile}
 done
 
-install -d -m 0750 %{buildroot}/%{_sysconfdir}/prosody/conf.d/
-install -m 0640 %{SOURCE3} %{buildroot}/%{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
-install -d -m 0755  %{buildroot}/%{_sysconfdir}/nginx/conf.d/
-install -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/nginx/conf.d/jitsi-meet.example.org.conf
-install -d -m 0755  %{buildroot}/%{_sysconfdir}/httpd/conf.d/
-install -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/httpd/conf.d/jitsi-meet.example.org.conf
+install -d -m 0750 %{buildroot}%{_sysconfdir}/prosody/conf.d/
+install -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
+install -d -m 0755  %{buildroot}%{_sysconfdir}/nginx/conf.d/
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.example.org.conf
+install -d -m 0755  %{buildroot}%{_sysconfdir}/httpd/conf.d/
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.example.org.conf
 
 # documentation
-install -D -m 0644 -t %{buildroot}/%{_pkgdocdir}/ *.md
-install -D -m 0644 -t %{buildroot}/%{_pkgdocdir}/ doc/*.md
-install -D -m 0644 %{SOURCE1} %{buildroot}/%{_pkgdocdir}/README.fedora
-install -D -m 0644 -t %{buildroot}/%{_pkgdocdir}/config/ \
+install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ *.md
+install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ doc/*.md
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_pkgdocdir}/README.fedora
+install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
     doc/debian/jitsi-meet/jitsi-meet.example \
-    doc/debian/jitsi-meet/jitsi-meet.example-apache \   
+    doc/debian/jitsi-meet/jitsi-meet.example-apache \
     doc/debian/jitsi-meet-prosody/prosody.cfg.lua-jvb.example \
     doc/debian/jitsi-meet-turn/turnserver.conf \
     config.js \
@@ -153,7 +151,7 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 %files prosody
 %license LICENSE
-%config(noreplace) %attr(0640,root,root}) %{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
+%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
 
 %files nginx
 %license LICENSE
