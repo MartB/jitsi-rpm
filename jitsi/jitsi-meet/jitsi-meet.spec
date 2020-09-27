@@ -30,14 +30,14 @@ See /usr/share/doc/jitsi-meet/README.fedora for details.
 Summary:        Jitsi Videoconferencing Server (meta package)
 Version:        %{project_version}
 BuildArch:      noarch
-Requires:       jitsi-meet = %{version}
-Requires:       jitsi-videobridge = %{version}
-Requires:       jicofo = %{version}
+Requires:       jitsi-meet = 2.0.%{project_version}
+Requires:       jitsi-videobridge = 2.0.%{project_version}
+Requires:       jicofo = 2.0.%{project_version}
 Requires:       prosody
 Requires:       nginx or httpd
-Requires:       jitsi-meet-prosody = %{version}
-Requires:       jitsi-meet-nginx = %{version} if nginx
-Requires:       jitsi-meet-apache = %{version} if apache
+Requires:       jitsi-meet-prosody = 2.0.%{project_version}
+Requires:       jitsi-meet-nginx = (2.0.%{project_version} if nginx)
+Requires:       jitsi-meet-apache = (2.0.%{project_version} if httpd)
 Suggests:       coturn
 Suggests:       jibri = 8.0
 Suggests:       jigasi = 1.1
