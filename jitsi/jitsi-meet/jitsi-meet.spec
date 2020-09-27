@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    0.0%{?dist}
+Release:    0.1%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -165,4 +165,7 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Sep 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.1
+- new package built with tito
+
 
