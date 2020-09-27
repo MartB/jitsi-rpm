@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    0.3%{?dist}
+Release:    0.4%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -163,6 +163,9 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Sep 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.4
+- rich dependencies second try
+
 * Sun Sep 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.3
 - fix rich dependencies
 
