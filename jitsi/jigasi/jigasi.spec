@@ -17,7 +17,6 @@ Source5:    %{name}.tmpfiles
 Source6:    README.fedora
 Patch1:     0001-log-to-syslog.patch
 
-BuildArch:      noarch
 BuildRequires:  maven
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
