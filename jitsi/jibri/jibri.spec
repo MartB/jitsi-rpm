@@ -4,7 +4,7 @@
 
 Name:       jibri
 Version:    8.0
-Release:    0%{?dist}
+Release:    0.0%{?dist}
 Summary:    Jitsi Broadcasting Infrastructure
 Url:        https://jitsi.org
 License:    ASL 2.0

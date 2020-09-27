@@ -4,7 +4,7 @@
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    0%{?dist}
+Release:    0.0%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
