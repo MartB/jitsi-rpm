@@ -3,7 +3,7 @@ Description=Jitsi-Meet Videobridge
 After=network.target
 
 [Service]
-EnvironmentFile=/etc/jitsi/jitsi-videobridge/config
+EnvironmentFile=/etc/sysconfig/jitsi-videobridge
 User=jvb
 ExecStart=/usr/share/jitsi-videobridge/jvb.sh ${JVB_OPTS}
 WorkingDirectory=~
