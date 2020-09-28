@@ -9,12 +9,13 @@ Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
 Source0:    https://github.com/%{project}/%{name}/archive/stable/%{project}-meet_%{project_version}.tar.gz
-Source1:    config
+Source1:    jvb.conf
 Source2:    sip-communicator.properties
 Source3:    %{name}.service
 Source4:    %{name}.sysusers
 Source5:    %{name}.tmpfiles
-Source6:    README.fedora
+Source6:    %{name}.sysconfig
+Source7:    README.fedora
 Patch1:     0001-log-to-syslog.patch
 
 BuildArch:      noarch
@@ -65,11 +66,13 @@ install -D -m 644 config/20-jvb-udp-buffers.conf %{buildroot}%{_sysconfdir}/sysc
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 
 # documentation
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ *.md
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ doc/*.md
-install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
+install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ jvb/target/classes/reference.conf
+install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- SCRIPTLETS -----------------------------------------------------------------#
 %pre
@@ -97,6 +100,7 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 # system config
 %config(noreplace) %{_sysconfdir}/sysctl.d/%{name}.conf
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
