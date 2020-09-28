@@ -60,7 +60,7 @@ Component "conference.jitsi-meet.example.org" "muc"
         "muc_domain_mapper";
         -- "token_verification";
     }
-    admins = { "focusUser@auth.jitsi-meet.example.org" }
+    admins = { "focus@auth.jitsi-meet.example.org" }
     muc_room_locking = false
     muc_room_default_public_jids = true
 
