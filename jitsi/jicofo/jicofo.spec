@@ -4,7 +4,7 @@
 
 Name:       jicofo
 Version:    2.0.%{project_version}
-Release:    0.2%{?dist}
+Release:    0.3%{?dist}
 Summary:    Jitsi conference focus
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -97,6 +97,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.3
+- add plugins to prosody subpackage, use __jitsiFQDN__ in config files
+
 * Mon Sep 28 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.2
 - fix service files
 
