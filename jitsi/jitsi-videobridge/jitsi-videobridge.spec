@@ -4,7 +4,7 @@
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    0.3%{?dist}
+Release:    0.4%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -107,6 +107,9 @@ install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.4
+- add plugins to prosody subpackage, use __jitsiFQDN__ in config files
+
 * Mon Sep 28 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.3
 - fix service files
 
