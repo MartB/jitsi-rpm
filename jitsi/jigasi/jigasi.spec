@@ -4,7 +4,7 @@
 
 Name:       jigasi
 Version:    1.1
-Release:    0.2%{?dist}
+Release:    0.3%{?dist}
 Summary:    Jitsi Gateway to SIP
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -99,6 +99,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 1.1-0.3
+- add plugins to prosody subpackage, use __jitsiFQDN__ in config files
+
 * Sun Sep 27 2020 Christopher Engelhard <ce@lcts.de> 1.1-0.2
 - jigasi is not noarch
 
