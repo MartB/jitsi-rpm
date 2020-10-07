@@ -1,7 +1,7 @@
 # Jitsi Videobridge settings
 
 # sets the XMPP domain (default: none)
-JVB_HOSTNAME=jitsi-meet.example.org
+JVB_HOSTNAME=__jitsiFQDN__
 
 # sets the hostname of the XMPP server (default: domain if set, localhost otherwise)
 JVB_HOST=

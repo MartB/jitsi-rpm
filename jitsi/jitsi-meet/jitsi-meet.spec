@@ -106,6 +106,10 @@ done
 #find "%{buildroot}%{_datadir}/%{name}-web" -type f -execdir sed -i "s|%{_buildir}||g" "{}" \;
 #find "%{buildroot}%{_datadir}/%{name}-web" -type d -exec chmod 755 {} \;
 
+# prosody plugins
+install -d -m 0755 %{buildroot}%{_datadir}/%{name}-prosody/
+cp -rp resources/prosody-plugins %{buildroot}%{_datadir}/%{name}-prosody/plugins
+
 # config
 for conffile in interface_config.js logging_config.js config.js; do
     install -D -m 0644 %{buildroot}%{_datadir}/%{name}/${conffile} %{buildroot}%{_sysconfdir}/%{name}/${conffile}
@@ -113,11 +117,11 @@ for conffile in interface_config.js logging_config.js config.js; do
 done
 
 install -d -m 0750 %{buildroot}%{_sysconfdir}/prosody/conf.d/
-install -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
+install -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 install -d -m 0755  %{buildroot}%{_sysconfdir}/nginx/conf.d/
-install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.example.org.conf
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
 install -d -m 0755  %{buildroot}%{_sysconfdir}/httpd/conf.d/
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.example.org.conf
+install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
 
 # documentation
 install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ *.md
@@ -138,13 +142,9 @@ install -m 0644 %{SOURCE2} ./README.fedora
 %files
 %doc %{_pkgdocdir}/
 %license LICENSE
-
-# package files/dirs
 %{_datadir}/%{name}/
 %dir %attr(0755,root,root) %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/%{name}/*
-
-# system config
 
 %files -n %{project}
 %doc README.fedora
@@ -152,15 +152,16 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 %files prosody
 %license LICENSE
-%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/prosody/conf.d/jitsi-meet.example.org.cfg.lua
+%{_datadir}/%{name}-prosody/
+%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 
 %files nginx
 %license LICENSE
-%config(noreplace) %{_sysconfdir}/nginx/conf.d/jitsi-meet.example.org.conf
+%config(noreplace) %{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
 
 %files apache
 %license LICENSE
-%config(noreplace) %{_sysconfdir}/httpd/conf.d/jitsi-meet.example.org.conf
+%config(noreplace) %{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog

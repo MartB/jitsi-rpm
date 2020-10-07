@@ -3,7 +3,7 @@ JIGASI_SIPUSER=12@provider.com
 JIGASI_SIPPWD=__SIPUserSecret__
 JIGASI_SECRET=__JigasiSecret__
 JIGASI_OPTS=""
-JIGASI_HOSTNAME=jitsi-meet.example.org
+JIGASI_HOSTNAME=__jitsiFQDN__
 JIGASI_HOST=localhost
 
 # adds java system props that are passed to jigasi (default are for logging config file)

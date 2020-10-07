@@ -14,14 +14,14 @@
             // The hosts of the XMPP servers to connect to as part of
             //  this environment
             "xmpp_server_hosts": [
-                "jitsi-meet.example.org"
+                "__jitsiFQDN__"
             ],
             // The xmpp domain we'll connect to on the XMPP server
-            "xmpp_domain": "jitsi-meet.example.org",
+            "xmpp_domain": "__jitsiFQDN__",
             // Jibri will login to the xmpp server as a privileged user
             "control_login": {
                 // The domain to use for logging in
-                "domain": "auth.jitsi-meet.example.org",
+                "domain": "auth.__jitsiFQDN__",
                 // The credentials for logging in
                 "username": "jibri",
                 "password": "__jibriUserSecret"
@@ -30,7 +30,7 @@
             //  a control muc as a means of announcing its availability
             //  to provide services for a given environment
             "control_muc": {
-                "domain": "internal.auth.jitsi-meet.example.org",
+                "domain": "internal.auth.__jitsiFQDN__",
                 "room_name": "JibriBrewery",
                 "nickname": "jibri"
             },
@@ -39,7 +39,7 @@
             //  with credentials to give it special abilities (e.g. not being
             //  displayed to other users like a normal participant)
             "call_login": {
-                "domain": "recorder.jitsi-meet.example.org",
+                "domain": "recorder.__jitsiFQDN__",
                 "username": "recorder",
                 "password": "__recorderUserSecret__"
             },
