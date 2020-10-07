@@ -30,14 +30,11 @@ See /usr/share/doc/jitsi-meet/README.fedora for details.
 Summary:        Jitsi Videoconferencing Server (meta package)
 Version:        %{project_version}
 BuildArch:      noarch
-Requires:       jitsi-meet = 2.0.%{project_version}
+Requires:       %{name} = 2.0.%{project_version}
 Requires:       jitsi-videobridge = 2.0.%{project_version}
 Requires:       jicofo = 2.0.%{project_version}
-Requires:       prosody
-Requires:       jitsi-meet-prosody = 2.0.%{project_version}
-Requires:       ( nginx or httpd )
-Requires:       ( jitsi-meet-nginx = 2.0.%{project_version} if nginx )
-Requires:       ( jitsi-meet-apache = 2.0.%{project_version} if httpd )
+Requires:       %{name}-prosody = 2.0.%{project_version}
+Requires:       %{name}-webconfig = 2.0.%{project_version}
 Suggests:       coturn
 Suggests:       jibri = 8.0
 Suggests:       jigasi = 1.1
@@ -66,6 +63,8 @@ Summary:        Jitsi Videoconferencing Server (nginx config)
 Version:        2.0.%{project_version}
 BuildArch:      noarch
 Requires:       nginx
+Requires:       %{name} = 2.0.%{project_version}
+Provides:       %{name}-webconfig = 2.0.%{project_version}
 
 %description nginx
 Nginx configuration files for the Jitsi Videoconferencing Server
@@ -76,6 +75,8 @@ Summary:        Jitsi Videoconferencing Server (apache config)
 Version:        2.0.%{project_version}
 BuildArch:      noarch
 Requires:       httpd
+Requires:       %{name} = 2.0.%{project_version}
+Provides:       %{name}-webconfig = 2.0.%{project_version}
 
 %description apache
 Apache configuration files for the Jitsi Videoconferencing Server
@@ -140,7 +141,7 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 # package files/dirs
 %{_datadir}/%{name}/
-%dir %attr(0700,root,root) %{_sysconfdir}/%{name}/
+%dir %attr(0755,root,root) %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/%{name}/*
 
 # system config
