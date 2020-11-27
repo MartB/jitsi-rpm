@@ -1,5 +1,5 @@
 %global project jitsi
-%global project_version 5076
+%global project_version 5142
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}

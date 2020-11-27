@@ -1,5 +1,4 @@
 %global project jitsi
-%global project_version 5076
 %global user %{name}
 
 Name:       jigasi

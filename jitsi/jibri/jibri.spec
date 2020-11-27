@@ -1,5 +1,4 @@
 %global project jitsi
-%global project_version 5076
 %global user %{name}
 
 Name:       jibri
@@ -53,7 +52,7 @@ install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ lib/logging.properties 
 
 # rundir
 install -d -m 0755 %{buildroot}%{_rundir}/%{name}/
-# Create and empty key file and pid file to be marked as a ghost file below.
+# Create an empty key file and pid file to be marked as a ghost file below.
 # i.e it is not actually included in the rpm, only the record of it is.
 touch %{buildroot}%{_rundir}/%{name}/%{name}.pid
 
