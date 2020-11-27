@@ -153,7 +153,7 @@ install -m 0644 %{SOURCE2} ./README.fedora
 %files prosody
 %license LICENSE
 %{_datadir}/%{name}-prosody/
-%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
+%config(noreplace) %attr(0640,root,prosody) %{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 
 %files nginx
 %license LICENSE
