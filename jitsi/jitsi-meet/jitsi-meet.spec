@@ -13,6 +13,7 @@ Source2:    README.meta
 Source3:    jitsi-meet.prosody
 Source4:    jitsi-meet.nginx
 Source5:    jitsi-meet.apache
+Source6:    jitsi-meet.tmpfiles
 
 # config.js for now, but in future generate other config via patch as well
 # this makes it easier to pick up changes upstream
@@ -24,6 +25,7 @@ BuildArch:      noarch
 BuildRequires:  nodejs
 BuildRequires:  npm
 BuildRequires:  git
+BuildRequires:  systemd-rpm-macros
 Requires:       jre-headless
 
 %description
@@ -102,31 +104,26 @@ cp %{SOURCE2} .
 %install
 # site
 install -m 0755 -p -d %{buildroot}%{_datadir}/%{name}
-install -m 0755 -p -d %{buildroot}%{_sysconfdir}/%{name}
 tar xjvf jitsi-meet.tar.bz2 -C %{buildroot}%{_datadir}/%{name} --strip 1
 
 for country in $(ls "node_modules/i18n-iso-countries/langs"); do
     install -m644 "node_modules/i18n-iso-countries/langs/${country}" %{buildroot}%{_datadir}/%{name}/lang/countries-${country}
 done
 
-#find "%{buildroot}%{_datadir}/%{name}-web" -type f -execdir sed -i "s|%{_buildir}||g" "{}" \;
-#find "%{buildroot}%{_datadir}/%{name}-web" -type d -exec chmod 755 {} \;
-
 # prosody plugins
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}-prosody/
 cp -rp resources/prosody-plugins %{buildroot}%{_datadir}/%{name}-prosody/plugins
 
 # config
+install -m 0755 -p -d %{buildroot}%{_sysconfdir}/%{name}
 for conffile in interface_config.js logging_config.js config.js; do
     install -D -m 0644 %{buildroot}%{_datadir}/%{name}/${conffile} %{buildroot}%{_sysconfdir}/%{name}/${conffile}
     ln -sf %{_sysconfdir}/%{name}/${conffile} %{buildroot}%{_datadir}/%{name}/${conffile}
 done
-install -d -m 0750 %{buildroot}%{_sysconfdir}/prosody/conf.d/
-install -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
-install -d -m 0755  %{buildroot}%{_sysconfdir}/nginx/conf.d/
-install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
-install -d -m 0755  %{buildroot}%{_sysconfdir}/httpd/conf.d/
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
+install -D -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}-prosody.conf
 
 # documentation
 install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ *.md
@@ -154,6 +151,7 @@ install -m 0644 %{SOURCE2} ./README.fedora
 %files prosody
 %license LICENSE
 %{_datadir}/%{name}-prosody/
+%{_tmpfilesdir}/%{name}-prosody.conf
 %config(noreplace) %attr(0640,root,prosody) %{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 
 %files nginx

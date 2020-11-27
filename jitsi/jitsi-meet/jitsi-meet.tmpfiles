@@ -1,0 +1,2 @@
+# ensure correct permissions for prosody config drop-in
+Z /etc/prosody/conf.d/jitsi-meet.cfg.lua 0640 root prosody
