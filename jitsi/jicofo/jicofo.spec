@@ -4,7 +4,7 @@
 
 Name:       jicofo
 Version:    2.0.%{project_version}
-Release:    0.4%{?dist}
+Release:    0.5%{?dist}
 Summary:    Jitsi conference focus
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -97,6 +97,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Fri Nov 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.5
+- update and unify service files
+
 * Fri Nov 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.4
 - Update to 2.0.5142
 
