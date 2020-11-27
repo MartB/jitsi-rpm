@@ -11,7 +11,7 @@ JVB_OPTS="--apis=,"
 # adds java system props that are passed to jvb (configures
 # config/logging dir & config files)
 JAVA_SYS_PROPS="\
-  -Dconfig.file=/etc/videobridge/jvb.conf\
+  -Dconfig.file=/etc/jitsi-videobridge/jvb.conf\
   -Dnet.java.sip.communicator.SC_HOME_DIR_LOCATION=/etc\
   -Dnet.java.sip.communicator.SC_HOME_DIR_NAME=jitsi-videobridge\
   -Dnet.java.sip.communicator.SC_LOG_DIR_LOCATION=/var/log/jitsi-videobridge\
