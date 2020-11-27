@@ -62,7 +62,7 @@ install -d -m 0755 %{buildroot}%{_rundir}/%{name}/
 #touch %{buildroot}%{_rundir}/%{name}/%{name}.pid
 
 # system config
-install -D -m 644 config/20-jvb-udp-buffers.conf %{buildroot}%{_sysconfdir}/sysctl.d/%{name}.conf
+install -D -m 644 config/20-jvb-udp-buffers.conf %{buildroot}%{_sysctldir}/%{name}.conf
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -80,6 +80,7 @@ install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 %post
 %systemd_post %{name}.service
+%sysctl_apply %{name}.conf
 
 %preun
 %systemd_preun %{name}.service
@@ -99,11 +100,11 @@ install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
 %dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/
 
 # system config
-%config(noreplace) %{_sysconfdir}/sysctl.d/%{name}.conf
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
+%{_sysctldir}/%{name}.conf
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
