@@ -79,10 +79,10 @@ server {
 
     location ~ ^/([^/?&:'"]+)/config.js$
     {
-       set $subdomain "$1.";
-       set $subdir "$1/";
+        set $subdomain "$1.";
+        set $subdir "$1/";
 
-       alias /etc/jitsi-meet/config.js;
+        alias /etc/jitsi-meet/config.js;
     }
 
     # Anything that didn't match above, and isn't a real file, assume it's a room name and redirect to /

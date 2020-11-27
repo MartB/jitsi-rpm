@@ -21,10 +21,9 @@ consider_bosh_secure = true;
 VirtualHost "__jitsiFQDN__"
     enabled = false -- Remove this line to enable this host
     authentication = "anonymous"
-    -- token authentication configuration options
+    -- configuration options for authentication = "token"
     --app_id="example_app_id"
     --app_secret="example_app_secret"
-
     -- Assign this host a certificate for TLS, otherwise it would use the one
     -- set in the global section (if any).
     -- Note that old-style SSL on port 5223 only supports one certificate, and will always
@@ -33,12 +32,8 @@ VirtualHost "__jitsiFQDN__"
         key = "/var/lib/prosody/__jitsiFQDN__.key";
         certificate = "/var/lib/prosody/__jitsiFQDN__.crt";
     }
-
-    -- additional component urls
     speakerstats_component = "speakerstats.__jitsiFQDN__"
     conference_duration_component = "conferenceduration.__jitsiFQDN__"
-
-    -- modules
     modules_enabled = {
         "bosh"; -- we need bosh
         "pubsub";
@@ -49,19 +44,16 @@ VirtualHost "__jitsiFQDN__"
         "muc_lobby_rooms";
     }
     c2s_require_encryption = false
-
-    -- multi-user chat urls
     lobby_muc = "lobby.__jitsiFQDN__"
     main_muc = "conference.__jitsiFQDN__"
     -- muc_lobby_whitelist = { "recorder.__jitsiFQDN__" } -- Here we can whitelist jibri to enter lobby enabled rooms
 
--- main conference muc component
 Component "conference.__jitsiFQDN__" "muc"
     storage = "memory"
     modules_enabled = {
         "muc_meeting_id";
         "muc_domain_mapper";
-        -- "token_verification";
+        --"token_verification";
     }
     admins = { "focus@auth.__jitsiFQDN__" }
     muc_room_locking = false
@@ -77,7 +69,6 @@ Component "internal.auth.__jitsiFQDN__" "muc"
     muc_room_locking = false
     muc_room_default_public_jids = true
 
--- auth host for jicofo/jvb users
 VirtualHost "auth.__jitsiFQDN__"
     authentication = "internal_plain"
     ssl = {
@@ -85,7 +76,6 @@ VirtualHost "auth.__jitsiFQDN__"
         certificate = "/var/lib/prosody/auth.__jitsiFQDN__.crt";
     }
 
--- additional components
 Component "focus.__jitsiFQDN__"
     component_secret = "__focusSecret__"
 
