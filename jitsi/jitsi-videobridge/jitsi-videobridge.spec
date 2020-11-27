@@ -4,7 +4,7 @@
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    0.5%{?dist}
+Release:    0.6%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -107,6 +107,9 @@ install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Fri Nov 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.6
+- update and unify service files
+
 * Fri Nov 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.5
 - Update to 2.0.5142
 - fix path to config file
