@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    0.7%{?dist}
+Release:    0.8%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -165,6 +165,10 @@ install -m 0644 %{SOURCE2} ./README.fedora
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Fri Nov 27 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.8
+- Update to 2.0.5142
+- fix permissions for prosody config
+
 * Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 2.0.5076-0.7
 - add plugins to prosody subpackage, use __jitsiFQDN__ in config files
 
