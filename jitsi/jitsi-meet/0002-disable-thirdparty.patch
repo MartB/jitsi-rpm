@@ -1,0 +1,12 @@
+diff -Naur a/config.js b/config.js
+--- a/config.js	2020-10-13 13:40:31.000000000 +0200
++++ b/config.js	2020-11-27 20:54:46.815265940 +0100
+@@ -423,7 +423,7 @@
+     // If third party requests are disabled, no other server will be contacted.
+     // This means avatars will be locally generated and callstats integration
+     // will not function.
+-    // disableThirdPartyRequests: false,
++    disableThirdPartyRequests: true,
+ 
+ 
+     // Peer-To-Peer mode: used (if enabled) when there are just 2 participants.

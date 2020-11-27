@@ -1,0 +1,61 @@
+diff -Naur a/config.js b/config.js
+--- a/config.js	2020-10-13 13:40:31.000000000 +0200
++++ b/config.js	2020-11-27 20:56:36.603115643 +0100
+@@ -6,29 +6,29 @@
+ 
+     hosts: {
+         // XMPP domain.
+-        domain: 'jitsi-meet.example.com',
++        domain: '__jitsiFQDN__',
+ 
+         // When using authentication, domain for guest users.
+-        // anonymousdomain: 'guest.example.com',
++        // anonymousdomain: 'guest.example.org',
+ 
+         // Domain for authenticated users. Defaults to <domain>.
+         // authdomain: 'jitsi-meet.example.com',
+ 
+         // Call control component (Jigasi).
+-        // call_control: 'callcontrol.jitsi-meet.example.com',
++        // call_control: 'callcontrol.__jitsiFQDN__',
+ 
+         // Focus component domain. Defaults to focus.<domain>.
+-        // focus: 'focus.jitsi-meet.example.com',
++        // focus: 'focus.__jitsiFQDN__',
+ 
+         // XMPP MUC domain. FIXME: use XEP-0030 to discover it.
+-        muc: 'conference.jitsi-meet.example.com'
++        muc: 'conference.__jitsiFQDN__'
+     },
+ 
+     // BOSH URL. FIXME: use XEP-0156 to discover it.
+-    bosh: '//jitsi-meet.example.com/http-bind',
++    bosh: '//__jitsiFQDN__/http-bind',
+ 
+     // Websocket URL
+-    // websocket: 'wss://jitsi-meet.example.com/xmpp-websocket',
++    // websocket: 'wss://__jitsiFQDN__/xmpp-websocket',
+ 
+     // The name of client node advertised in XEP-0115 'c' stanza
+     clientNode: 'http://jitsi.org/jitsimeet',
+@@ -36,7 +36,7 @@
+     // The real JID of focus participant - can be overridden here
+     // Do not change username - FIXME: Make focus username configurable
+     // https://github.com/jitsi/jitsi-meet/issues/7376
+-    // focusUserJid: 'focus@auth.jitsi-meet.example.com',
++    // focusUserJid: 'focus@auth.__jitsiFQDN__',
+ 
+ 
+     // Testing / experimental features.
+@@ -193,9 +193,9 @@
+     //     appKey: '<APP_KEY>' // Specify your app key here.
+     //     // A URL to redirect the user to, after authenticating
+     //     // by default uses:
+-    //     // 'https://jitsi-meet.example.com/static/oauth.html'
++    //     // 'https://__jitsiFQDN__/static/oauth.html'
+     //     redirectURI:
+-    //          'https://jitsi-meet.example.com/subfolder/static/oauth.html'
++    //          'https://__jitsiFQDN__/subfolder/static/oauth.html'
+     // },
+     // When integrations like dropbox are enabled only that will be shown,
+     // by enabling fileRecordingsServiceEnabled, we show both the integrations

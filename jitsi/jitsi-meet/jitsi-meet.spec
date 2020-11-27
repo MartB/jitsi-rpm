@@ -14,6 +14,12 @@ Source3:    jitsi-meet.prosody
 Source4:    jitsi-meet.nginx
 Source5:    jitsi-meet.apache
 
+# config.js for now, but in future generate other config via patch as well
+# this makes it easier to pick up changes upstream
+Patch0:     0001-harmonize-placeholders.patch
+Patch1:     0002-disable-thirdparty.patch
+#Patch2:     0003-use-system-ssl-conf.patch
+
 BuildArch:      noarch
 BuildRequires:  nodejs
 BuildRequires:  npm
@@ -115,7 +121,6 @@ for conffile in interface_config.js logging_config.js config.js; do
     install -D -m 0644 %{buildroot}%{_datadir}/%{name}/${conffile} %{buildroot}%{_sysconfdir}/%{name}/${conffile}
     ln -sf %{_sysconfdir}/%{name}/${conffile} %{buildroot}%{_datadir}/%{name}/${conffile}
 done
-
 install -d -m 0750 %{buildroot}%{_sysconfdir}/prosody/conf.d/
 install -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 install -d -m 0755  %{buildroot}%{_sysconfdir}/nginx/conf.d/
@@ -131,11 +136,7 @@ install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
     doc/debian/jitsi-meet/jitsi-meet.example \
     doc/debian/jitsi-meet/jitsi-meet.example-apache \
     doc/debian/jitsi-meet-prosody/prosody.cfg.lua-jvb.example \
-    doc/debian/jitsi-meet-turn/turnserver.conf \
-    config.js \
-    interface_config.js \
-    logging_config.js
-
+    doc/debian/jitsi-meet-turn/turnserver.conf
 install -m 0644 %{SOURCE2} ./README.fedora
 
 #-- FILES ---------------------------------------------------------------------#
