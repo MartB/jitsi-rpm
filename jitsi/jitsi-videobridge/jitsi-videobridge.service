@@ -1,8 +1,10 @@
 [Unit]
-Description=Jitsi-Meet Videobridge
-After=network.target
+Description=Jitsi Videobridge
+After=network-online.target
+Wants=network-online.target
 
 [Service]
+SuccessExitStatus=143
 EnvironmentFile=/etc/sysconfig/jitsi-videobridge
 User=jvb
 ExecStart=/usr/share/jitsi-videobridge/jvb.sh ${JVB_OPTS}
