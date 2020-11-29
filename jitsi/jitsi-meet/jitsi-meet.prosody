@@ -19,7 +19,7 @@ consider_bosh_secure = true;
 
 -- HOSTS & COMPONENTS --
 VirtualHost "__jitsiFQDN__"
-    enabled = false -- Remove this line to enable this host
+    --enabled = false -- Remove this line to enable this host
     authentication = "anonymous"
     -- configuration options for authentication = "token"
     --app_id="example_app_id"
