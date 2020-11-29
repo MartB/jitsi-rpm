@@ -3,7 +3,7 @@
 
 Name:       jibri
 Version:    8.0
-Release:    0.2%{?dist}
+Release:    0.3%{?dist}
 Summary:    Jitsi Broadcasting Infrastructure
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -106,6 +106,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Nov 29 2020 Christopher Engelhard <ce@lcts.de> 8.0-0.3
+- add documentation
+
 * Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 8.0-0.2
 - add plugins to prosody subpackage, use __jitsiFQDN__ in config files
 
