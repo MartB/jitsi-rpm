@@ -4,7 +4,7 @@
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    0%{?dist}
+Release:    1%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -113,6 +113,9 @@ install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Nov 29 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-1
+- add documentation
+
 * Sat Nov 28 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-0.7
 - use _sysctldir instead of sysctl.d
 
