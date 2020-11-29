@@ -25,9 +25,17 @@ Requires:	systemd
 %{?sysusers_requires_compat}
 
 %description
-blablablabla
+SIP Gateway for the Jitsi videoconferencing system.
 
-See /usr/share/doc/jigasi/README.fedora for details.
+Jitsi is a set of open-source projects that allows you to easily
+build and deploy secure video conferencing solutions. At the heart
+of Jitsi are Jitsi Videobridge and Jitsi Meet, which let you have
+conferences on the internet, while other projects in the community
+enable other features such as audio, dial-in, recording, and
+simulcasting.
+
+See /usr/share/doc/jigasi/README-fedora.md for setup
+instructions.
 
 
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
@@ -64,7 +72,7 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 # documentation
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ *.md
-install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README.fedora
+install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- SCRIPTLETS -----------------------------------------------------------------#
 %pre

@@ -8,13 +8,11 @@ Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
 Source0:    https://github.com/%{project}/%{name}/archive/stable/%{project}-meet_%{project_version}.tar.gz
-Source1:    README.fedora
-Source2:    README.meta
-Source3:    jitsi-meet.prosody
-Source4:    jitsi-meet.nginx
-Source5:    jitsi-meet.apache
-Source6:    jitsi-meet.tmpfiles
-
+Source1:    jitsi-meet.prosody
+Source2:    jitsi-meet.nginx
+Source3:    jitsi-meet.apache
+Source4:    jitsi-meet.tmpfiles
+Source5:    README.fedora
 # config.js for now, but in future generate other config via patch as well
 # this makes it easier to pick up changes upstream
 Patch0:     0001-harmonize-placeholders.patch
@@ -29,9 +27,17 @@ BuildRequires:  systemd-rpm-macros
 Requires:       jre-headless
 
 %description
-blablablabla
+Web frontend / app for the Jitsi videoconferencing system.
 
-See /usr/share/doc/jitsi-meet/README.fedora for details.
+Jitsi is a set of open-source projects that allows you to easily
+build and deploy secure video conferencing solutions. At the heart
+of Jitsi are Jitsi Videobridge and Jitsi Meet, which let you have
+conferences on the internet, while other projects in the community
+enable other features such as audio, dial-in, recording, and
+simulcasting.
+
+See /usr/share/doc/jitsi-meet/README-fedora.md for setup
+instructions.
 
 
 %package -n %{project}
@@ -99,7 +105,6 @@ Apache configuration files for the Jitsi Videoconferencing Server
 npm install
 make
 make source-package
-cp %{SOURCE2} .
 
 %install
 # site
@@ -120,21 +125,20 @@ for conffile in interface_config.js logging_config.js config.js; do
     install -D -m 0644 %{buildroot}%{_datadir}/%{name}/${conffile} %{buildroot}%{_sysconfdir}/%{name}/${conffile}
     ln -sf %{_sysconfdir}/%{name}/${conffile} %{buildroot}%{_datadir}/%{name}/${conffile}
 done
-install -D -m 0640 %{SOURCE3} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}-prosody.conf
+install -D -m 0640 %{SOURCE1} %{buildroot}%{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}-prosody.conf
 
 # documentation
 install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ *.md
 install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/ doc/*.md
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_pkgdocdir}/README.fedora
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_pkgdocdir}/README-fedora.md
 install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
     doc/debian/jitsi-meet/jitsi-meet.example \
     doc/debian/jitsi-meet/jitsi-meet.example-apache \
     doc/debian/jitsi-meet-prosody/prosody.cfg.lua-jvb.example \
     doc/debian/jitsi-meet-turn/turnserver.conf
-install -m 0644 %{SOURCE2} ./README.fedora
 
 #-- FILES ---------------------------------------------------------------------#
 %files
@@ -145,20 +149,23 @@ install -m 0644 %{SOURCE2} ./README.fedora
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/%{name}/*
 
 %files -n %{project}
-%doc README.fedora
+%doc %{_pkgdocdir}/README-fedora.md
 %license LICENSE
 
 %files prosody
+%doc %{_pkgdocdir}/README-fedora.md
 %license LICENSE
 %{_datadir}/%{name}-prosody/
 %{_tmpfilesdir}/%{name}-prosody.conf
 %config(noreplace) %attr(0640,root,prosody) %{_sysconfdir}/prosody/conf.d/jitsi-meet.cfg.lua
 
 %files nginx
+%doc %{_pkgdocdir}/README-fedora.md
 %license LICENSE
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/jitsi-meet.conf
 
 %files apache
+%doc %{_pkgdocdir}/README-fedora.md
 %license LICENSE
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/jitsi-meet.conf
 

@@ -28,9 +28,17 @@ Requires:       systemd
 %{?sysusers_requires_compat}
 
 %description
-blablablablabla
+Video/audio bridge for the Jitsi videoconferencing system.
 
-See /usr/share/doc/jitsi-videobridge/README.fedora for details.
+Jitsi is a set of open-source projects that allows you to easily
+build and deploy secure video conferencing solutions. At the heart
+of Jitsi are Jitsi Videobridge and Jitsi Meet, which let you have
+conferences on the internet, while other projects in the community
+enable other features such as audio, dial-in, recording, and
+simulcasting.
+
+See /usr/share/doc/jitsi-videobridge/README-fedora.md for setup
+instructions.
 
 
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
@@ -57,9 +65,6 @@ install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ %{SOURCE1} %{SOURCE2}
 
 # rundir
 install -d -m 0755 %{buildroot}%{_rundir}/%{name}/
-# Create and empty key file and pid file to be marked as a ghost file below.
-# i.e it is not actually included in the rpm, only the record of it is.
-#touch %{buildroot}%{_rundir}/%{name}/%{name}.pid
 
 # system config
 install -D -m 644 config/20-jvb-udp-buffers.conf %{buildroot}%{_sysctldir}/%{name}.conf
@@ -72,7 +77,7 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ *.md
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ doc/*.md
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ jvb/target/classes/reference.conf
-install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README.fedora
+install -D -m 644 %{SOURCE7} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- SCRIPTLETS -----------------------------------------------------------------#
 %pre
