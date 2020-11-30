@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Jitsi Videobridge</short>
+  <description>The Jitsi Videobridge component of the Jitsi videoconferencing system manages the bridging of audio/video streams between users. Enable this if you run the jitsi-videobridge service.</description>
+  <port protocol="udp" port="10000"/>
+</service>
