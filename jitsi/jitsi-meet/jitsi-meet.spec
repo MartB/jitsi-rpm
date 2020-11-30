@@ -27,7 +27,11 @@ BuildRequires:  systemd-rpm-macros
 Requires:       jre-headless
 
 %description
-Web frontend / app for the Jitsi videoconferencing system.
+Web frontend / app for the Jitsi videoconference system.
+
+Jitsi Meet is an open-source (Apache) WebRTC JavaScript application
+that uses Jitsi Videobridge to provide high quality, secure and
+scalable video conferences through a webbrowser.
 
 Jitsi is a set of open-source projects that allows you to easily
 build and deploy secure video conferencing solutions. At the heart

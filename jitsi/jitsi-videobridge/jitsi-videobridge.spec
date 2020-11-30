@@ -30,7 +30,15 @@ Requires:       systemd
 Recommends:     %{name}-firewalld if firewalld
 
 %description
-Video/audio bridge for the Jitsi videoconferencing system.
+Video/audio bridge for the Jitsi videoconference system.
+
+Jitsi Videobridge is an XMPP server component that allows for
+multiuser video communication. Unlike the dedicated hardware
+videobridges, Jitsi Videobridge does not mix the video channels
+into a composite video stream, but only relays the received video
+channels to all call participants. Therefore, while it does need
+to run on a server with good network bandwidth and CPU power is
+not that critical for performance.
 
 Jitsi is a set of open-source projects that allows you to easily
 build and deploy secure video conferencing solutions. At the heart

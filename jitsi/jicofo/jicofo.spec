@@ -5,7 +5,7 @@
 Name:       jicofo
 Version:    2.0.%{project_version}
 Release:    1%{?dist}
-Summary:    Jitsi conference focus
+Summary:    Jitsi Conference Focus
 Url:        https://jitsi.org
 License:    ASL 2.0
 Source0:    https://github.com/%{project}/%{name}/archive/stable/%{project}-meet_%{project_version}.tar.gz
@@ -27,7 +27,16 @@ Requires:       systemd
 %{?sysusers_requires_compat}
 
 %description
-User/chat room manager for the Jitsi videoconferencing system.
+Jitsi Conference Focus is a server side focus component used in
+Jitsi conferences.
+
+Conference focus is a mandatory component of the Jitsi conferencing
+system next to the videobridge. It is responsible for managing media
+sessions between each of the participants and the videobridge.
+Whenever new conference is about to start an IQ is sent to the component
+to allocate new a focus instance. After that a special focus participant
+joins the Multi User Chat room and creates sessions between Jitsi
+videobridge and the participants.
 
 Jitsi is a set of open-source projects that allows you to easily
 build and deploy secure video conferencing solutions. At the heart
