@@ -72,7 +72,7 @@ Start `jicofo.service`
 
 Configuration is located in `/etc/jitsi-videobridge`. Replace `__jitsiFQDN__` and `__jvbUserSecret__` in `jvb.conf`.
 
-Jitsi-videobridge communicates of ports 4443 and 10000, so these need to be opened or forwarded if you're behind NAT.
+Jitsi-videobridge communicates on port 10000/udp, so it needs to be opened or forwarded if you're behind NAT. The `jitsi-videobridge-firewalld` package provides a `jitsi-videobridge` service definition for firewalld that you can enable to open that port.
 
 Start `jitsi-videobridge.service`. Additional service configuration can be found in `/etc/sysconfig/jitsi-videobridge`
 
