@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -175,6 +175,9 @@ install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Fri Dec 04 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-2
+- Update README
+
 * Sun Nov 29 2020 Christopher Engelhard <ce@lcts.de> 2.0.5142-1
 - add documentation.
 - enable in prosody by default
