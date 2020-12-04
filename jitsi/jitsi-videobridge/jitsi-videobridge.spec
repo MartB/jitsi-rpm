@@ -27,7 +27,7 @@ BuildRequires:  systemd-rpm-macros
 Requires:       jre-headless
 Requires:       systemd
 %{?sysusers_requires_compat}
-Recommends:     %{name}-firewalld if firewalld
+Recommends:     (%{name}-firewalld if firewalld)
 
 %description
 Video/audio bridge for the Jitsi videoconference system.
@@ -50,12 +50,12 @@ simulcasting.
 See /usr/share/doc/jitsi-videobridge/README-fedora.md for setup
 instructions.
 
-%package -n firewalld
+%package firewalld
 Summary: Firewalld service definition for Jitsi Videobridge
 Requires: %{name} = %{version}-%{release}
 Requires: firewalld-filesystem
 
-%description -n firewalld
+%description firewalld
 This adds a service definition file for firewalld that opens the
 required ports (10000/UDP) for the Jitsi Videobridge to function.
 
@@ -91,7 +91,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
-install -D -m 644 %{SOURCE7} %{buildroot}%{_libdir}/firewalld/services/jitsi-videobridge.xml
+install -D -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/firewalld/services/jitsi-videobridge.xml
 
 # documentation
 install -D -m 644 -t %{buildroot}/%{_pkgdocdir}/ *.md
@@ -106,6 +106,9 @@ install -D -m 644 %{SOURCE8} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 %post
 %systemd_post %{name}.service
 %sysctl_apply %{name}.conf
+
+%post firewalld
+%firewalld_reload
 
 %preun
 %systemd_preun %{name}.service
@@ -130,6 +133,9 @@ install -D -m 644 %{SOURCE8} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
 %{_sysctldir}/%{name}.conf
+
+%files firewalld
+%{_prefix}/lib/firewalld/services/jitsi-videobridge.xml
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
