@@ -1,10 +1,10 @@
 %global project jitsi
-%global project_version 5142
+%global project_version 5390
 %global user %{name}
 
 Name:       jicofo
 Version:    2.0.%{project_version}
-Release:    2%{?dist}
+Release:    0%{?dist}
 Summary:    Jitsi Conference Focus
 Url:        https://jitsi.org
 License:    ASL 2.0
