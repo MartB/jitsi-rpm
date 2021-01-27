@@ -1,7 +1,7 @@
 diff -Naur a/config.js b/config.js
---- a/config.js	2020-10-13 13:40:31.000000000 +0200
-+++ b/config.js	2020-11-29 14:16:31.133755511 +0100
-@@ -6,29 +6,29 @@
+--- a/config.js	2021-01-08 15:03:21.000000000 +0100
++++ b/config.js	2021-01-27 08:34:32.186652578 +0100
+@@ -6,26 +6,26 @@
  
      hosts: {
          // XMPP domain.
@@ -9,16 +9,11 @@ diff -Naur a/config.js b/config.js
 +        domain: '__jitsiFQDN__',
  
          // When using authentication, domain for guest users.
--        // anonymousdomain: 'guest.example.com',
-+        // anonymousdomain: 'guest.__jitsiFQDN__',
+         // anonymousdomain: 'guest.example.com',
  
          // Domain for authenticated users. Defaults to <domain>.
 -        // authdomain: 'jitsi-meet.example.com',
-+        // authdomain: 'jitsi-meet.__jitsiFQDN__',
- 
-         // Call control component (Jigasi).
--        // call_control: 'callcontrol.jitsi-meet.example.com',
-+        // call_control: 'callcontrol.__jitsiFQDN__',
++        // authdomain: '__jitsiFQDN__',
  
          // Focus component domain. Defaults to focus.<domain>.
 -        // focus: 'focus.jitsi-meet.example.com',
@@ -39,7 +34,7 @@ diff -Naur a/config.js b/config.js
  
      // The name of client node advertised in XEP-0115 'c' stanza
      clientNode: 'http://jitsi.org/jitsimeet',
-@@ -36,7 +36,7 @@
+@@ -33,7 +33,7 @@
      // The real JID of focus participant - can be overridden here
      // Do not change username - FIXME: Make focus username configurable
      // https://github.com/jitsi/jitsi-meet/issues/7376
@@ -48,7 +43,7 @@ diff -Naur a/config.js b/config.js
  
  
      // Testing / experimental features.
-@@ -193,9 +193,9 @@
+@@ -195,9 +195,9 @@
      //     appKey: '<APP_KEY>' // Specify your app key here.
      //     // A URL to redirect the user to, after authenticating
      //     // by default uses:
@@ -60,7 +55,7 @@ diff -Naur a/config.js b/config.js
      // },
      // When integrations like dropbox are enabled only that will be shown,
      // by enabling fileRecordingsServiceEnabled, we show both the integrations
-@@ -441,7 +441,7 @@
+@@ -433,7 +433,7 @@
          // The STUN servers that will be used in the peer to peer connections
          stunServers: [
  
@@ -69,12 +64,12 @@ diff -Naur a/config.js b/config.js
              { urls: 'stun:meet-jit-si-turnrelay.jitsi.net:443' }
          ]
  
-@@ -626,7 +626,7 @@
+@@ -621,7 +621,7 @@
      // The URL of the moderated rooms microservice, if available. If it
      // is present, a link to the service will be rendered on the welcome page,
      // otherwise the app doesn't render it.
 -    // moderatedRoomServiceUrl: 'https://moderated.jitsi-meet.example.com',
 +    // moderatedRoomServiceUrl: 'https://moderated.__jitsiFQDN__',
  
-     // List of undocumented settings used in jitsi-meet
-     /**
+     // If true, tile view will not be enabled automatically when the participants count threshold is reached.
+     // disableTileView: true,

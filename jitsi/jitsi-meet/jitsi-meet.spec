@@ -1,9 +1,9 @@
 %global project jitsi
-%global project_version 5142
+%global project_version 5390
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    2%{?dist}
+Release:    0%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
