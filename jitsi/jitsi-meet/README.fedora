@@ -43,7 +43,7 @@ Prosody configuration for Jitsi is found in `/etc/prosody/conf.d/jitsi-meet.cfg.
 
 ```
 $ prosodyctl cert generate __jitsiFQDN__
-$ prosodyctl cert generate auth __jitsiFQDN__
+$ prosodyctl cert generate auth.__jitsiFQDN__
 $ trust anchor /var/lib/prosody/__jitsiFQDN__
 $ trust anchor /var/lib/prosody/auth.__jitsiFQDN__
 ```
