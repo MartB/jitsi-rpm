@@ -18,6 +18,7 @@ Source6:    %{name}.sysconfig
 Source7:    %{name}.firewalld
 Source8:    README.fedora
 Patch1:     0001-log-to-syslog.patch
+Patch2:     0002-reduce-log-verbosity.patch
 
 BuildArch:      noarch
 BuildRequires:  maven

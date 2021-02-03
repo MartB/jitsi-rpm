@@ -1,0 +1,15 @@
+Reduce log verbosity. Fixes Issue #3.
+Thanks to Fritz Eifert for the fix.
+
+diff -Naur a/jvb/lib/logging.properties b/jvb/lib/logging.properties
+--- a/jvb/lib/logging.properties	2021-01-04 21:42:48.000000000 +0100
++++ b/jvb/lib/logging.properties	2021-02-03 13:26:41.738061154 +0100
+@@ -13,6 +13,8 @@
+ 
+ # All of the INFO level logs from MediaStreamImpl are unnecessary in the context of jitsi-videobridge.
+ org.jitsi.impl.neomedia.MediaStreamImpl.level=WARNING
++org.jitsi.health.HealthChecker.level=WARNING
++org.jitsi.videobridge.VideobridgeExpireThread.level=WARNING
+ 
+ # Syslog (uncomment handler to use)
+ com.agafua.syslog.SyslogHandler.transport = udp
