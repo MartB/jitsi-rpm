@@ -24,7 +24,7 @@
     <Directory "/usr/share/jitsi-meet">
         Options Indexes MultiViews Includes FollowSymLinks
         AddOutputFilter Includes html
-        AllowOverride All
+        AllowOverride none
         Require all granted
     </Directory>
 
