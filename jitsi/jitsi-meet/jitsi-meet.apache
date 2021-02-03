@@ -25,8 +25,7 @@
         Options Indexes MultiViews Includes FollowSymLinks
         AddOutputFilter Includes html
         AllowOverride All
-        Order allow,deny
-        Allow from all
+        Require all granted
     </Directory>
 
     ErrorDocument 404 /static/404.html
