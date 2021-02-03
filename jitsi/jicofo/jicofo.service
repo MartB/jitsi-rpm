@@ -11,6 +11,7 @@ ExecStart=/usr/share/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HO
 WorkingDirectory=~
 
 # Hardening
+# jicofo doesn't need to access any of these
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
@@ -18,6 +19,8 @@ ProtectHome=yes
 ProtectKernelTunables=yes
 ProtectControlGroups=yes
 ProtectSystem=strict
+# whitelist writing to rundir and config dir 
+ReadWritePaths=/run/jicofo /etc/jicofo
 
 [Install]
 WantedBy=multi-user.target
