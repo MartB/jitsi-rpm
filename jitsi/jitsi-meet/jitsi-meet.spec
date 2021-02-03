@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -175,6 +175,11 @@ install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Wed Feb 03 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-2
+- Disallow all overrides in apache config (Issue #1)
+- Fix old-style apache config options (Issue #1)
+- Fix typo in documentation (Issue #2)
+
 * Wed Jan 27 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-1
 - Update to 5390
 
