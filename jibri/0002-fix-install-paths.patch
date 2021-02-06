@@ -1,8 +1,0 @@
-diff -Naur a/resources/debian-package/opt/jitsi/jibri/launch.sh b/resources/debian-package/opt/jitsi/jibri/launch.sh
---- a/resources/debian-package/opt/jitsi/jibri/launch.sh	2019-08-21 19:10:53.000000000 +0200
-+++ b/resources/debian-package/opt/jitsi/jibri/launch.sh	2020-09-26 14:58:59.011225840 +0200
-@@ -1,3 +1,3 @@
- #!/bin/bash
- 
--exec java -Djava.util.logging.config.file=/etc/jitsi/jibri/logging.properties -jar /opt/jitsi/jibri/jibri.jar --config "/etc/jitsi/jibri/config.json"
-+exec java -Djava.util.logging.config.file=/etc/jibri/logging.properties -jar /usr/share/jibri/jibri.jar --config "/etc/jibri/config.json"

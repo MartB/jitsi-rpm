@@ -1,5 +1,6 @@
 # create rundir
-d %{_rundir}/%{name} 0755 %{user} %{user} -
+d /run/jibri 0755 jibri jibri -
 # ensure correct permissions for all files in config dir
-Z %{_sysconfdir}/%{project}/%{name} 0640 %{user} %{user}
-z %{_sysconfdir}/%{project}/%{name} 0750 %{user} %{user}
+Z /etc/jibri 0640 root jibri
+z /etc/jibri 0750 root jibri
+z /etc/jibri/finalize_recording.sh 0750 root jibri

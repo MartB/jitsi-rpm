@@ -43,7 +43,7 @@ Prosody configuration for Jitsi is found in `/etc/prosody/conf.d/jitsi-meet.cfg.
 
 ```
 $ prosodyctl cert generate __jitsiFQDN__
-$ prosodyctl cert generate auth __jitsiFQDN__
+$ prosodyctl cert generate auth.__jitsiFQDN__
 $ trust anchor /var/lib/prosody/__jitsiFQDN__
 $ trust anchor /var/lib/prosody/auth.__jitsiFQDN__
 ```
@@ -75,6 +75,15 @@ Configuration is located in `/etc/jitsi-videobridge`. Replace `__jitsiFQDN__` an
 Jitsi-videobridge communicates on port 10000/udp, so it needs to be opened or forwarded if you're behind NAT. The `jitsi-videobridge-firewalld` package provides a `jitsi-videobridge` service definition for firewalld that you can enable to open that port.
 
 Start `jitsi-videobridge.service`. Additional service configuration can be found in `/etc/sysconfig/jitsi-videobridge`
+
+#### Jibri
+
+Configuration is located in `/etc/jibri/config.json`. Replace `__jitsiFQDN__`, `__jibriUserSecret__` and `__recorderUserSecret__`.
+Add users to prosody:
+```
+$ prosodyctl register jibri auth.__jitsiFQDN__ __jibriUserSecret__
+$ prosodyctl register recorder auth.__jitsiFQDN__ __recorderUserSecret__
+```
 
 ### Troubleshooting
 
