@@ -1,5 +1,5 @@
 # create rundir
-d %{_rundir}/%{name} 0755 %{user} %{user} -
+d /run/jigasi 0755 jigasi jigasi -
 # ensure correct permissions for all files in config dir
-Z %{_sysconfdir}/%{project}/%{name} 0640 %{user} %{user}
-z %{_sysconfdir}/%{project}/%{name} 0750 %{user} %{user}
+Z /etc/jigasi 0640 jigasi jigasi
+z /etc/jigasi 0750 jigasi jigasi
