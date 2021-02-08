@@ -3,7 +3,7 @@
 
 Name:       jibri
 Version:    8.0
-Release:    0.3%{?dist}
+Release:    0.4%{?dist}
 Summary:    Jitsi Broadcasting Infrastructure
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -106,6 +106,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 8.0-0.4
+- rebuild for git repo move
+
 * Sun Nov 29 2020 Christopher Engelhard <ce@lcts.de> 8.0-0.3
 - add documentation
 
