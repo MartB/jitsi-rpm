@@ -3,7 +3,7 @@
 
 Name:       jigasi
 Version:    1.1
-Release:    0.4%{?dist}
+Release:    0.5%{?dist}
 Summary:    Jitsi Gateway to SIP
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -106,6 +106,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 1.1-0.5
+- Rebuild for git repo move
+
 * Sun Nov 29 2020 Christopher Engelhard <ce@lcts.de> 1.1-0.4
 - add documentation
 * Wed Oct 07 2020 Christopher Engelhard <ce@lcts.de> 1.1-0.3
