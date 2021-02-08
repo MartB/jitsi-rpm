@@ -1,5 +1,5 @@
 # create rundir
-d %{_rundir}/%{name} 0755 %{user} %{user} -
+d /run/jicofo 0755 jicofo jicofo -
 # ensure correct permissions for all files in config dir
-Z %{_sysconfdir}/%{project}/%{name} 0640 %{user} %{user}
-z %{_sysconfdir}/%{project}/%{name} 0750 %{user} %{user}
+Z /etc/jicofo 0640 jicofo jicofo
+z /etc/jicofo 0750 jicofo jicofo
