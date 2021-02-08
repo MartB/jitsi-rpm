@@ -4,7 +4,7 @@
 
 Name:       jicofo
 Version:    2.0.%{project_version}
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Jitsi Conference Focus
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -114,6 +114,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-3
+- rebuild for git repo move
+
 * Wed Feb 03 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-2
 - Permit service to write to its rundir and config dir (Issue #4)
 
