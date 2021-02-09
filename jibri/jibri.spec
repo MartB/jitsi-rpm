@@ -26,6 +26,7 @@ BuildRequires:  maven-local
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
 
+Requires:       chromedriver
 Requires:       ffmpeg
 Requires:       alsa-utils
 Requires:       icewm
@@ -120,9 +121,9 @@ test "$1" == "0" && rm -rf %{_rundir}/%{name}/{.cache,.config,.local} || true
 # package files/dirs
 %{_datadir}/%{name}/
 %dir %attr(0750,root,%{user}) %{_sysconfdir}/%{name}/
-%config(noreplace) %attr(0644,root,%{user}) %{_sysconfdir}/%{name}/*.{preferences,properties,conf,json}
-%config(noreplace) %attr(0644,root,%{user}) %{_sysconfdir}/%{name}/asoundrc
-%config(noreplace) %attr(0755,root,%{user}) %{_sysconfdir}/%{name}/*.sh
+%config(noreplace) %attr(0640,root,%{user}) %{_sysconfdir}/%{name}/*.{preferences,properties,conf,json}
+%config(noreplace) %attr(0640,root,%{user}) %{_sysconfdir}/%{name}/asoundrc
+%config(noreplace) %attr(0750,root,%{user}) %{_sysconfdir}/%{name}/*.sh
 %dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/
 %dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/.icewm
 %dir %attr(0755,%{user},%{user}) %{_var}/spool/%{name}/
