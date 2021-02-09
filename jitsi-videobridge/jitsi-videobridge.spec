@@ -24,6 +24,7 @@ BuildArch:      noarch
 BuildRequires:  maven
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  firewalld-filesystem
 
 Requires:       jre-headless
 Requires:       systemd
