@@ -93,6 +93,7 @@ Summary:        Jitsi Videoconferencing Server (apache config)
 Version:        2.0.%{project_version}
 BuildArch:      noarch
 Requires:       httpd
+Requires:       mod_ssl
 Requires:       %{name} = 2.0.%{project_version}
 Provides:       %{name}-webconfig = 2.0.%{project_version}
 
