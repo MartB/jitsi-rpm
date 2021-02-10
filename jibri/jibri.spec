@@ -26,6 +26,7 @@ BuildRequires:  maven-local
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
 
+Requires:       xdotool
 Requires:       chromedriver
 Requires:       ffmpeg
 Requires:       alsa-utils
