@@ -1,5 +1,5 @@
 # create rundir
-d /run/jicofo 0755 jicofo jicofo -
+d /run/jicofo 0700 jicofo jicofo -
 # ensure correct permissions for all files in config dir
-Z /etc/jicofo 0640 jicofo jicofo
-z /etc/jicofo 0750 jicofo jicofo
+Z /etc/jicofo 0640 root jicofo
+z /etc/jicofo 0750 root jicofo

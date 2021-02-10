@@ -7,7 +7,7 @@ Wants=network-online.target
 SuccessExitStatus=143
 EnvironmentFile=/etc/jicofo/config
 User=jicofo
-ExecStart=/usr/share/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
+ExecStart=/usr/libexec/jicofo --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --port=${JICOFO_PORT} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
 WorkingDirectory=~
 
 # Hardening
@@ -19,8 +19,8 @@ ProtectHome=yes
 ProtectKernelTunables=yes
 ProtectControlGroups=yes
 ProtectSystem=strict
-# whitelist writing to rundir and config dir 
-ReadWritePaths=/run/jicofo /etc/jicofo
+# whitelist writing to rundir
+ReadWritePaths=/run/jicofo
 
 [Install]
 WantedBy=multi-user.target

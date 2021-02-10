@@ -15,10 +15,12 @@ Source3:    %{name}.service
 Source4:    %{name}.sysusers
 Source5:    %{name}.tmpfiles
 Source6:    README.fedora
+Source7:    jicofo.sh
 Patch1:     0001-log-to-syslog.patch
 
 BuildArch:      noarch
 BuildRequires:  maven
+BuildRequires:  maven-local
 BuildRequires:  java-openjdk-devel
 BuildRequires:  systemd-rpm-macros
 
@@ -52,6 +54,8 @@ instructions.
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
 %prep
 %autosetup -p1 -n %{name}-stable-%{project}-meet_%{project_version}
+%pom_xpath_inject //pom:manifest \
+    '<addClasspath>true</addClasspath><useUniqueVersions>false</useUniqueVersions><classpathPrefix>lib</classpathPrefix><mainClass>org.jitsi.jicofo.Main</mainClass>'
 
 %build
 # build & copy dependencies
@@ -64,7 +68,8 @@ mvn dependency:copy-dependencies -DincludeScope=runtime
 # program
 install -D -m 644 -t %{buildroot}%{_datadir}/%{name}/lib/ target/dependency/*
 install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_datadir}/%{name}/%{name}.jar
-install -m 755 resources/%{name}.sh %{buildroot}%{_datadir}/%{name}/%{name}.sh
+# install -m 755 resources/%{name}.sh %{buildroot}%{_datadir}/%{name}/%{name}.sh
+install -D -m 755 %{SOURCE7} %{buildroot}%{_libexecdir}/%{name}
 
 # config
 install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ lib/logging.properties
@@ -103,9 +108,10 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 # package files/dirs
 %{_datadir}/%{name}/
-%dir %attr(0700,%{user},root) %{_sysconfdir}/%{name}/
-%config(noreplace) %attr(0644,%{user},root) %{_sysconfdir}/%{name}/*
-%dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/
+%{_libexecdir}/%{name}
+%dir %attr(0750,root,%{user}) %{_sysconfdir}/%{name}/
+%config(noreplace) %attr(0649,root,%{user}) %{_sysconfdir}/%{name}/*
+%dir %attr(0700,%{user},%{user}) %{_rundir}/%{name}/
 
 # system config
 %{_unitdir}/%{name}.service
