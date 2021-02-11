@@ -1,5 +1,5 @@
 # create rundir
-d /run/jitsi-videobridge 0755 jvb jvb -
+d /run/jitsi-videobridge 0700 jvb jvb -
 # ensure correct permissions for all files in config dir
-Z /etc/jitsi-videobridge 0640 jvb jvb
-z /etc/jitsi-videobridge 0750 jvb jvb
+Z /etc/jitsi-videobridge 0640 root jvb
+z /etc/jitsi-videobridge 0750 root jvb
