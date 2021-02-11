@@ -3,7 +3,7 @@
 
 Name:       jibri
 Version:    8.0
-Release:    0.4%{?dist}
+Release:    0.5%{?dist}
 Summary:    Jitsi Broadcasting Infrastructure
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -141,6 +141,11 @@ test "$1" == "0" && rm -rf %{_rundir}/%{name}/{.cache,.config,.local} || true
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Thu Feb 11 2021 Christopher Engelhard <ce@lcts.de> 8.0-0.5
+- Add Requires for xdotool, chromedriver
+- Fix config permissions
+- Misc packaging fixes
+
 * Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 8.0-0.4
 - rebuild for git repo move
 
