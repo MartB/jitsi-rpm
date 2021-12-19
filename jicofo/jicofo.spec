@@ -21,7 +21,7 @@ Patch1:     0001-log-to-syslog.patch
 BuildArch:      noarch
 BuildRequires:  maven
 BuildRequires:  maven-local
-BuildRequires:  java-openjdk-devel
+BuildRequires:  java-latest-openjdk-devel
 BuildRequires:  systemd-rpm-macros
 
 Requires:       jre-headless
