@@ -4,7 +4,7 @@
 
 Name:       jicofo
 Version:    2.0.%{project_version}
-Release:    0.2%{?dist}
+Release:    0.3%{?dist}
 Summary:    Jitsi Conference Focus
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -120,6 +120,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Dec 19 2021 Christopher Engelhard <ce@lcts.de> 2.0.6726-0.3
+- rename dep java-latest-openjdk-devel
+
 * Sun Dec 19 2021 Christopher Engelhard <ce@lcts.de> 2.0.6726-0.2
 - update to 2.0.6726
 - Misc. fixes for jicofo
