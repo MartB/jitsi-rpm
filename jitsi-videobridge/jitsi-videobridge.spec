@@ -22,7 +22,7 @@ Patch2:     0002-reduce-log-verbosity.patch
 
 BuildArch:      noarch
 BuildRequires:  maven
-BuildRequires:  java-openjdk-devel
+BuildRequires:  java-latest-openjdk-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  firewalld-filesystem
 
