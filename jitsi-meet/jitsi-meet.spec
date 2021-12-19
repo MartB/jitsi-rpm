@@ -1,9 +1,9 @@
 %global project jitsi
-%global project_version 5390
+%global project_version 6726
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    3%{?dist}
+Release:    0.1%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -20,6 +20,7 @@ Patch1:     0002-disable-thirdparty.patch
 #Patch2:     0003-use-system-ssl-conf.patch
 
 BuildArch:      noarch
+BuildRequires:  make
 BuildRequires:  nodejs
 BuildRequires:  npm
 BuildRequires:  git
@@ -107,6 +108,7 @@ Apache configuration files for the Jitsi Videoconferencing Server
 
 %build
 # build & pack compiled output into archive
+npm update
 npm install
 make
 make source-package

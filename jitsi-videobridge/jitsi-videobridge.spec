@@ -1,10 +1,10 @@
 %global project jitsi
-%global project_version 5390
+%global project_version 6726
 %global user jvb
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    3%{?dist}
+Release:    0.1%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
