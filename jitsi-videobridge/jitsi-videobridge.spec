@@ -4,7 +4,7 @@
 
 Name:       jitsi-videobridge
 Version:    2.0.%{project_version}
-Release:    0.1%{?dist}
+Release:    0.2%{?dist}
 Summary:    Jitsi Videobridge
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -141,6 +141,12 @@ install -D -m 644 %{SOURCE8} %{buildroot}/%{_pkgdocdir}/README-fedora.md
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Dec 19 2021 Christopher Engelhard <ce@lcts.de> 2.0.6726-0.2
+- update to 2.0.6726
+- Fix confdir permissions
+- Fix firewalld_reload
+- fix leftover macros in tmpfiles
+
 * Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-3
 - rebuilt for git repo move
 * Wed Feb 03 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-2
