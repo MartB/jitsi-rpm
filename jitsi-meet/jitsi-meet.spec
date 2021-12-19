@@ -3,7 +3,7 @@
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
-Release:    0.1%{?dist}
+Release:    0.2%{?dist}
 Summary:    Jitsi Videoconferencing Web App
 Url:        https://jitsi.org
 License:    ASL 2.0
@@ -178,6 +178,10 @@ install -D -m 0644 -t %{buildroot}%{_pkgdocdir}/config/ \
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+* Sun Dec 19 2021 Christopher Engelhard <ce@lcts.de> 2.0.6726-0.2
+- update to 2.0.6726
+- Fixes #10
+
 * Mon Feb 08 2021 Christopher Engelhard <ce@lcts.de> 2.0.5390-3
 - rebuild for git repo move
 
