@@ -1,9 +1,9 @@
 diff -Naur a/jvb/lib/logging.properties b/jvb/lib/logging.properties
---- a/jvb/lib/logging.properties	2021-12-10 18:44:05.000000000 +0100
-+++ b/jvb/lib/logging.properties	2021-12-19 13:26:02.612918494 +0100
-@@ -10,6 +10,11 @@
- 
- org.jitsi.videobridge.xmpp.ComponentImpl.level=FINE
+--- a/jvb/lib/logging.properties
++++ b/jvb/lib/logging.properties
+@@ -8,6 +8,11 @@ java.util.logging.ConsoleHandler.formatter = org.jitsi.utils.logging2.JitsiLogFo
+ org.jitsi.utils.logging2.JitsiLogFormatter.programname=JVB
+ .level=INFO
  
 +# these pollute the logs to no real benefit
 +# elevating from INFO to WARNING

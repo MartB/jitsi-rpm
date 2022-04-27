@@ -1,5 +1,5 @@
 %global project jitsi
-%global project_version 6726
+%global project_version 7210
 %global user %{name}
 
 Name:       jicofo

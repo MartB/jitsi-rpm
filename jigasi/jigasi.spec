@@ -1,13 +1,13 @@
 %global project jitsi
 %global user %{name}
-
+%global git_hash d792d0f612c6d7928f4a63c81f1c7836ec70a9aa
 Name:       jigasi
-Version:    1.1
+Version:    %{git_hash}
 Release:    0.5%{?dist}
 Summary:    Jitsi Gateway to SIP
 Url:        https://jitsi.org
 License:    ASL 2.0
-Source0:    https://github.com/%{project}/%{name}/archive/v%{version}.tar.gz
+Source0:    https://github.com/%{project}/%{name}/archive/%{git_hash}.tar.gz
 Source1:    config
 Source2:    sip-communicator.properties
 Source3:    %{name}.service
@@ -39,6 +39,7 @@ instructions.
 
 
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
+%global debug_package %{nil}
 %prep
 %autosetup -p1
 
@@ -56,7 +57,7 @@ install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_datadir}/%{name}/%{n
 install -m 755 %{name}.sh %{buildroot}%{_datadir}/%{name}/
 
 # config
-install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ lib/logging.properties %{name}-home/log4j2.xml %{name}-home/callstats-java-sdk.properties
+install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ lib/logging.properties %{name}-home/callstats-java-sdk.properties
 install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ %{SOURCE1} %{SOURCE2}
 
 # rundir

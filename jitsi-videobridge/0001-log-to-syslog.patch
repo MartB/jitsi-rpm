@@ -1,6 +1,6 @@
-diff -Naur a/jvb/lib/logging.properties b/jvb/lib/logging.properties
---- a/jvb/lib/logging.properties	2020-08-24 22:46:22.000000000 +0200
-+++ b/jvb/lib/logging.properties	2020-09-26 15:39:19.118869706 +0200
+diff -Naur a/lib/logging.properties b/lib/logging.properties
+--- a/jvb/lib/logging.properties
++++ b/jvb/lib/logging.properties
 @@ -1,5 +1,5 @@
 -handlers= java.util.logging.ConsoleHandler
 -#handlers= java.util.logging.ConsoleHandler, com.agafua.syslog.SyslogHandler

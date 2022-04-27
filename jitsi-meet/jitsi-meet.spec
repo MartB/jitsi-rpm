@@ -1,5 +1,5 @@
 %global project jitsi
-%global project_version 6726
+%global project_version 7210
 
 Name:       jitsi-meet
 Version:    2.0.%{project_version}
@@ -13,11 +13,12 @@ Source2:    jitsi-meet.nginx
 Source3:    jitsi-meet.apache
 Source4:    jitsi-meet.tmpfiles
 Source5:    README.fedora
+Source6:    build-openssl.conf
 # config.js for now, but in future generate other config via patch as well
 # this makes it easier to pick up changes upstream
 Patch0:     0001-harmonize-placeholders.patch
 Patch1:     0002-disable-thirdparty.patch
-#Patch2:     0003-use-system-ssl-conf.patch
+#Patch2:     0003-webpack-openssl3-hash.patch
 
 BuildArch:      noarch
 BuildRequires:  make
@@ -108,6 +109,7 @@ Apache configuration files for the Jitsi Videoconferencing Server
 
 %build
 # build & pack compiled output into archive
+export OPENSSL_CONF=%{SOURCE6}
 npm update
 npm install
 make

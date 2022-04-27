@@ -1,5 +1,5 @@
 %global project jitsi
-%global project_version 6726
+%global project_version 7210
 %global user jvb
 
 Name:       jitsi-videobridge
@@ -81,7 +81,7 @@ install -m 644 jvb/target/%{name}-%{version}.jar %{buildroot}%{_datadir}/%{name}
 install -m 755 jvb/resources/jvb.sh %{buildroot}%{_datadir}/%{name}/
 
 # config
-install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ jvb/lib/logging.properties config/log4j2.xml config/callstats-java-sdk.properties
+install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ jvb/lib/logging.properties config/callstats-java-sdk.properties
 install -D -m 640 -t %{buildroot}%{_sysconfdir}/%{name}/ %{SOURCE1} %{SOURCE2}
 
 # rundir

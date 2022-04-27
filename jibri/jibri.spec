@@ -2,12 +2,12 @@
 %global user %{name}
 
 Name:       jibri
-Version:    8.0
+Version:    4a4378cb0e2c025d7ff3c12ae9561045df961d40
 Release:    0.5%{?dist}
 Summary:    Jitsi Broadcasting Infrastructure
 Url:        https://jitsi.org
 License:    ASL 2.0
-Source0:    https://github.com/%{project}/%{name}/archive/v%{version}.tar.gz
+Source0:    https://github.com/%{project}/%{name}/archive/%{version}.tar.gz
 Source1:    %{name}.service
 Source2:    %{name}-icewm.service
 Source3:    %{name}-xorg.service
@@ -122,7 +122,7 @@ test "$1" == "0" && rm -rf %{_rundir}/%{name}/{.cache,.config,.local} || true
 # package files/dirs
 %{_datadir}/%{name}/
 %dir %attr(0750,root,%{user}) %{_sysconfdir}/%{name}/
-%config(noreplace) %attr(0640,root,%{user}) %{_sysconfdir}/%{name}/*.{preferences,properties,conf,json}
+%config(noreplace) %attr(0640,root,%{user}) %{_sysconfdir}/%{name}/*.{preferences,properties,conf,config,json}
 %config(noreplace) %attr(0640,root,%{user}) %{_sysconfdir}/%{name}/asoundrc
 %config(noreplace) %attr(0750,root,%{user}) %{_sysconfdir}/%{name}/*.sh
 %dir %attr(0755,%{user},%{user}) %{_rundir}/%{name}/

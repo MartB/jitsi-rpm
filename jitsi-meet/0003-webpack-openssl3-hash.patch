@@ -1,0 +1,14 @@
+diff --git a/webpack.config.js.orig b/webpack.config.js
+index be76d95..5e63c01 100644
+--- a/resources/load-test/webpack.config.js
++++ b/resources/load-test/webpack.config.js
+@@ -94,7 +94,8 @@ const config = {
+         filename: `[name]${minimize ? '.min' : ''}.js`,
+         path: `${__dirname}/libs`,
+         publicPath: 'load-test/libs/',
+-        sourceMapFilename: `[name].${minimize ? 'min' : 'js'}.map`
++        sourceMapFilename: `[name].${minimize ? 'min' : 'js'}.map`,
++        hashFunction: "md5"
+     },
+     plugins: [
+         analyzeBundle
